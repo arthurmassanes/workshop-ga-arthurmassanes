@@ -65,8 +65,8 @@ tests_run:	$(SRC_OBJ) $(TEST_OBJ)
 ## Get coverage
 .PHONY: coverage
 coverage:
-	gcovr -b --exclude-directories tests
-	gcovr -r . --exclude-directories tests
+	gcovr -b
+	gcovr -r .
 
 ## Clear rules
 .PHONY: clean
@@ -83,5 +83,3 @@ fclean: clean
 
 .PHONY: re
 re:	fclean all clean
-
-
