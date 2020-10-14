@@ -6,8 +6,12 @@ on:
       - dev
 jobs:
   unit-test:
-    runs-on: epitest-docker
+    runs-on: ubuntu-20.04
+    container: docker://epitechcontent/epitest-docker
+
     steps:
+      - name: "Use docker"
+        run: docker run --rm -v $PWD:/home/ -w /home  /bin/zsh
       - name: "Checkout"
         uses: actions/checkout@v2
       - name: "Test run"
