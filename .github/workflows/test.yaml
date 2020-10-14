@@ -6,7 +6,7 @@ on:
       - dev
 jobs:
   unit-test:
-    runs-on: epitechcontent/epitest-docker
+    runs-on: epitest-docker
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
