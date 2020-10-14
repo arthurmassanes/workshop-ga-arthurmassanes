@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: "Use docker"
-        run: docker run --rm -it -v $PWD:/home/ -w /home epitechcontent/epitest-docker /bin/zsh
+        run: docker run --rm -v $PWD:/home/ -w /home epitechcontent/epitest-docker /bin/zsh
       - name: "Checkout"
         uses: actions/checkout@v2
       - name: "Test run"
