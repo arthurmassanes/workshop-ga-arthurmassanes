@@ -12,15 +12,25 @@ jobs:
     steps:
       - name: "Checkout"
         uses: actions/checkout@v2
+
       - name: "Test run"
         shell: bash
-        run: make tests_run
+        run: make tests_run > unit-test_outputs
+        if: always()
+
       - name: "Coverage"
         shell: bash
-        run: make coverage
-  hello-world:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: "Say hello world"
-        shell: bash
-        run: "echo Welcome to the github Action workshop !"
+        run: make coverage > coverage_outputs
+        if: always()
+
+      - name: "Artifacts-1"
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit-test-artifact
+          path: unit-test_outputs
+
+      - name: "Artifacts-2"
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-artifact
+          path: coverage_outputs
